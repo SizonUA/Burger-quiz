@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     formAnswers = document.getElementById("formAnswers"),
     burgerBtn = document.getElementById("burger"),
     prevModalBtn = document.getElementById("prev"),
-    nextModalBtn = document.getElementById("next");
+    nextModalBtn = document.getElementById("next"),
+    modalDialog = document.querySelector(".modal-dialog");
 
   const questions = [{
       question: "Какого цвета бургер?",
@@ -90,6 +91,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  let count = -100;
+  modalDialog.style.top = count + "%";
+
+  const animateModal = () => {
+    modalDialog.style.top = count + "%";
+    count += 3;
+    if (count < 0) {
+      requestAnimationFrame(animateModal);
+    } else {
+      count = -100;
+    }
+  };
+
   let clientWidth = document.documentElement.clientWidth;
 
   if (clientWidth < 768) {
@@ -108,12 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  burgerBtn.addEventListener("click", () => {
-    burgerBtn.classList.add("active");
-    modalBlock.classList.add("d-block");
-    playTest();
-  });
+
   btnOpenModal.addEventListener("click", () => {
+    requestAnimationFrame(animateModal);
     modalBlock.classList.add("d-block");
     playTest();
   });
@@ -121,6 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
   closeModal.addEventListener("click", () => {
     modalBlock.classList.remove("d-block");
     burgerBtn.classList.remove("active");
+  });
+
+  burgerBtn.addEventListener("click", () => {
+    burgerBtn.classList.add("active");
+    modalBlock.classList.add("d-block");
+    playTest();
   });
 
   document.addEventListener("click", (event) => {
