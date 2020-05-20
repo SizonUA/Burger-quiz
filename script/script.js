@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
       answers: [
         {
           id: "color_standart",
-          title: "Стандартного",
+          title: "Стандарт",
           url: "./image/burger.png",
         },
         {
           id: "color_black",
-          title: "Черного",
+          title: "Черный",
           url: "./image/burgerBlack.png",
         },
       ],

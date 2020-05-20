@@ -41,6 +41,7 @@ label span {
     height: 50px;
     background: url('../image/burger.png') center no-repeat;
     background-size: contain;
+    margin-right: 15px;
 }
 
 .logo-text,
